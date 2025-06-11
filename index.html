@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso 1 Ano de Namoro</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+    
+    /* Estilo do overlay de pré-carregamento */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff4d4d, #ff1a75);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+    }
+    
+    #preloader h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    #startSiteBtn {
+      background: white;
+      color: #ff4d4d;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.3em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    #startSiteBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Estilos do site principal (inicialmente escondido) */
+    #site-content {
+      display: none;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+    }
+    
+    header {
+      background: linear-gradient(to right, #ff4d4d, #ff1a75);
+      color: white;
+      padding: 40px 10px;
+      box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    
+    .poema, .mensagem {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .poema:hover, .mensagem:hover {
+      transform: translateY(-5px);
+    }
+    
+    .poema h2, .mensagem h2 {
+      color: #ff4d4d;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      margin-top: 0;
+    }
+    
+    .poema p {
+      font-style: italic;
+      line-height: 1.8;
+    }
+    
+    .mensagem p {
+      line-height: 1.8;
+      text-align: left;
+    }
+    
+    .slideshow-container {
+      position: relative;
+      max-width: 600px;
+      height: 400px;
+      margin: 30px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      animation: fade 1.5s ease-in-out;
+    }
+    
+    .mySlides img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 15px;
+      margin: auto;
+      display: block;
+    }
+    
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+    
+    .musica {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .musica h2 {
+      color: #ff4d4d;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      margin-top: 0;
+    }
+    
+    audio {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .heart {
+      color: #ff4d4d;
+      font-size: 1.5em;
+      animation: pulse 1.5s infinite;
+      display: inline-block;
+    }
+    
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.3);}
+      100% {transform: scale(1);}
+    }
+    
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      color: #ff4d4d;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay de pré-carregamento -->
+  <div id="preloader">
+    <h2>Feliz 1 Ano, Amor! <span class="heart">❤️</span></h2>
+    <button id="startSiteBtn">Dê play minha gata</button>
+  </div>
+
+  <!-- Conteúdo principal do site (inicialmente escondido) -->
+  <div id="site-content">
+    <header>
+      <h1>Feliz Dia dos Namorados e Nosso 1 Ano! <span class="heart">❤️</span></h1>
+    </header>
+    
+    <div class="content">
+      <div class="slideshow-container">
+        <div class="mySlides">
+          <img src="foto1.jpeg" alt="Nossa foto 1">
+        </div>
+        <div class="mySlides">
+          <img src="foto2.jpeg" alt="Nossa foto 2">
+        </div>
+        <div class="mySlides">
+          <img src="foto4.jpeg" alt="Nossa foto 3">
+        </div>
+        <div class="mySlides">
+          <img src="foto5.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.13.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.14 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.14.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.15 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.15.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.16.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.17 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.17.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.18 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.18 (2).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.18.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.19 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.19 (2).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.19.jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.20 (1).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.20 (2).jpeg" alt="Nossa foto 4">
+        </div>
+        <div class="mySlides">
+          <img src="WhatsApp Image 2025-06-11 at 16.54.20.jpeg" alt="Nossa foto 4">
+        </div>
+      </div>
+
+      <div class="poema">
+        <h2>Esse poema é a nossa cara</h2>
+        <p>
+          Minha morena, minha pequena, minha fortaleza, meu amor.<br>
+          Estrada a caminhar é o que mais quero, pois ao meu lado estarás.<br>
+          Dificuldades vamos passar, na verdade, já fizeram começar.<br>
+          Mas, juntando, todas são fichinhas, pois com o amor iremos triunfar.
+        </p>
+      </div>
+
+      <div class="mensagem">
+        <h2>Uma mensagem só nossa <span class="heart">❤️</span></h2>
+        <p>
+          É minha gata, quem diria que hoje estaríamos fazendo um aninho de namoro (assumidos rsrs).<br>
+          Nós somos aquele típico casal que todo mundo olhava e falava: "Esses não vão durar um mês". Mas também né, nós começamos a ficar todo torto kskksks.<br><br>
+          Mas do nosso jeito torto, como diz o ditado, escondido é mais gostoso. Com o passar do tempo esse escondido nem importava mais, porque só sua presença já melhorava muito meu dia.<br>
+          Nossas "fulguinhas" foram ficando cada vez mais leves, naturais e principalmente afetivas.<br><br>
+          E pra resumir tudo: podemos até ter começado torto, sem nenhuma expectativa, porém a vida veio e nos mostrou que o amor não se escolhe. E hoje estamos aqui pra provar que temos uma relação com muito amor e muita felicidade.<br>
+          Que bom que escolhi você pra ser a mulher da minha vida (espero que você também, rum tô de olho).<br><br>
+          Te amo muito minha gata, você é tudo pra mim. <span class="heart">❤️</span>
+        </p>
+      </div>
+
+      <div class="musica">
+        <h2>Nossa música agora</h2>
+        <audio id="nossaMusica" controls loop autoplay>
+          <source src="luan.mp3" type="audio/mpeg">
+          Seu navegador não suporta a reprodução de áudio.
+        </audio>
+      </div>
+      
+      <footer>
+        Feito com amor para o nosso primeiro ano juntos
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Espera o DOM carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      const preloader = document.getElementById('preloader');
+      const siteContent = document.getElementById('site-content');
+      const startBtn = document.getElementById('startSiteBtn');
+      const audio = document.getElementById('nossaMusica');
+      
+      // Configura o botão de iniciar
+      startBtn.addEventListener('click', function() {
+        // Esconde o preloader
+        preloader.style.display = 'none';
+        
+        // Mostra o conteúdo do site
+        siteContent.style.display = 'block';
+        
+        // Tenta tocar a música automaticamente
+        audio.play().catch(e => {
+          console.log('Não foi possível tocar automaticamente:', e);
+          // Se não conseguir, mostra os controles
+          audio.controls = true;
+        });
+        
+        // Inicia o slideshow
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          slides[slideIndex-1].style.display = "block";  
+          setTimeout(showSlides, 2000); // Muda a imagem a cada 2 segundos
+        }
+      });
+    });
+  </script>
+</body>
+</html>
